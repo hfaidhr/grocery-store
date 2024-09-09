@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Build output
+dist/
+build/
+
+# Husky
+.husky/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
