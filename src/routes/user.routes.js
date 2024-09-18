@@ -7,4 +7,5 @@ router.patch("/users/:userId", UserController.updateUser);
 router.post("/login", UserController.loginUser);
 router.post("/refresh-token", UserController.refreshToken);
 router.post("/logout/:userId", UserController.logout);
+
 module.exports = router;
