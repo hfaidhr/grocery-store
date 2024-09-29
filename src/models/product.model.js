@@ -56,6 +56,13 @@ const productSchema = new mongoose.Schema(
 			ref: "User",
 			required: [true, "Product owner is required"],
 		},
+		images: [
+			{
+				type: String,
+				required: [true, "Product images are required"],
+				ref: "PostgresImage",
+			},
+		],
 	},
 	{ timestamps: true }
 );
