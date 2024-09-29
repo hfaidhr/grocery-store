@@ -1,7 +1,8 @@
 const Product = require("../models/product.model");
+
 class ProductRepository {
-	async create(product) {
-		return await Product.create(product);
+	async create(productData) {
+		return await Product.create(productData);
 	}
 
 	async findById(productId) {
@@ -14,29 +15,19 @@ class ProductRepository {
 			runValidators: true,
 		});
 	}
+
 	async deleteProduct(productId) {
 		return await Product.findByIdAndDelete(productId);
 	}
 
 	async listProducts(filters = {}) {
-		try {
-			const querry = {};
+		const query = {};
+		if (filters.category) query.category = filters.category;
+		if (filters.status) query.status = filters.status;
+		if (filters.type) query.type = filters.type;
 
-			if (filters.category) {
-				querry.category = filters.category;
-			}
-
-			if (filters.status) {
-				querry.status = filters.status;
-			}
-			if (filters.type) {
-				querry.type = filters.type;
-			}
-			const products = await Product.find(querry).exec();
-			return products;
-		} catch (error) {
-			throw new Error("Error listing products: " + error.message);
-		}
+		return await Product.find(query).exec();
 	}
 }
+
 module.exports = new ProductRepository();
